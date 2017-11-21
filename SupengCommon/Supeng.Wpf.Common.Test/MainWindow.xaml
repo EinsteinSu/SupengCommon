@@ -1,0 +1,25 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Supeng.Wpf.Common.Test"
+        xmlns:views="clr-namespace:Supeng.Wpf.Common.Views;assembly=Supeng.Wpf.Common"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" x:Class="Supeng.Wpf.Common.Test.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainWindowViewModle}}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <views:Progress DataContext="{Binding Progress}"/>
+        <StackPanel Grid.Row="1">
+            <Button Command="{Binding ShowCommand}" Content="Show"/>
+            <Button Command="{Binding HideCommand}" Content="Hide"/>
+        </StackPanel>
+    </Grid>
+</Window>

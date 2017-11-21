@@ -1,0 +1,24 @@
+﻿<Window x:Class="Supeng.Wpf.Common.Views.DialogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Supeng.Wpf.Common.Views"
+        mc:Ignorable="d"
+        Title="{Binding Title}" Height="300" Width="300" Icon="{Binding Icon}"  WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentControl Content="{Binding Content}" />
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Margin="5" Content="OK" Width="80" Command="{Binding OkCommand}" />
+                <Button Margin="5" Content="Cancel" Width="80" Command="{Binding CancelCommand}" />
+            </StackPanel>
+            <local:Progress Grid.Row="1" DataContext="{Binding Progress}" />
+        </Grid>
+    </Grid>
+</Window>
