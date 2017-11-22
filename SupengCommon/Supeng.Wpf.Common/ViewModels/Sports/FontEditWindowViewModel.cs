@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using System.Windows;
+﻿using System.Windows;
 using DevExpress.Mvvm.DataAnnotations;
 using Supeng.Wpf.Common.Views.Sports;
 

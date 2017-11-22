@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace SupengCommon
+namespace Supeng.Common
 {
     public static class TypeConvertHelper
     {

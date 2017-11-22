@@ -27,9 +27,7 @@ namespace Supeng.Wpf.Common.Commons
             dialogViewModel.Window.DataContext = dialogViewModel;
             var showDialog = dialogViewModel.Window.ShowDialog();
             if (showDialog != null && showDialog.Value)
-            {
                 action?.Invoke();
-            }
         }
     }
 }

@@ -5,7 +5,8 @@ namespace Supeng.Wpf.Common.ViewModels
 {
     public abstract class DataLayoutDialogWindowViewModel<T> : DialogWindowViewModelBase where T : new()
     {
-        private DataLayoutView _view;
+        private readonly DataLayoutView _view;
+
         public DataLayoutDialogWindowViewModel()
         {
             _view = new DataLayoutView();

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Supeng.Wpf.Common.Views"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="300" Width="300" Icon="{Binding Icon}"  WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+        Title="{Binding Title}" Height="300" Width="300" Icon="{Binding Icon}" WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>

@@ -10,7 +10,6 @@ using Supeng.Wpf.Common.Commons;
 using Supeng.Wpf.Common.ViewModels;
 using Supeng.Wpf.Common.ViewModels.Sports;
 using Supeng.Wpf.Common.Views;
-using SupengCommon;
 
 namespace Supeng.Wpf.Common.Test
 {
@@ -33,6 +32,7 @@ namespace Supeng.Wpf.Common.Test
             Progress = new ProgressViewModel();
             Progress.Message = "Hello !!!!";
             FontVM = new FontControlableViewModel();
+            FontVM.Load();
         }
 
         public FontControlableViewModel FontVM { get; set; }
@@ -64,21 +64,15 @@ namespace Supeng.Wpf.Common.Test
 
         public void SetFont()
         {
-            //var vm = new FontConfigDialogWindow();
-            // if(FontVM == null)
-            //      LoadFont();
-            //  vm.Data = FontVM;
-            //  vm.ShowDialogWindow(() =>
-            //  {
-            //      FontVM.Save();
-            //  });
             var vm = new FontEditWindowViewModel();
-            vm.Data = FontVM;
+            vm.Data = JsonConvert.DeserializeObject<FontControlableViewModel>(FontVM.ToString());
             vm.ShowDialogWindow(() =>
             {
-
+                FontVM = vm.Data;
+                RaisePropertyChanged("FontVM");
                 FontVM.Save();
             });
+
         }
 
         public void Hide()

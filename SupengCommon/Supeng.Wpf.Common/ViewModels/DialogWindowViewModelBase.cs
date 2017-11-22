@@ -4,8 +4,8 @@ using System.Windows.Media;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using Newtonsoft.Json;
+using Supeng.Common;
 using Supeng.Wpf.Common.Interfaces;
-using SupengCommon;
 
 namespace Supeng.Wpf.Common.ViewModels
 {
@@ -19,8 +19,8 @@ namespace Supeng.Wpf.Common.ViewModels
         {
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
-            Size = new WindowLayout { Height = 400, Width = 400 };
-            Progress = new ProgressViewModel { Visibility = Visibility.Hidden };
+            Size = new WindowLayout {Height = 400, Width = 400};
+            Progress = new ProgressViewModel {Visibility = Visibility.Hidden};
         }
 
         [JsonIgnore]
@@ -111,7 +111,13 @@ namespace Supeng.Wpf.Common.ViewModels
         public virtual void Close()
         {
             GetLayoutFileName()
-                .Save(JsonConvert.SerializeObject(new WindowLayout { Height = Window.Height, Width = Window.Width, Left = Window.Left, Top = Window.Top }));
+                .Save(JsonConvert.SerializeObject(new WindowLayout
+                {
+                    Height = Window.Height,
+                    Width = Window.Width,
+                    Left = Window.Left,
+                    Top = Window.Top
+                }));
         }
 
         protected virtual string GetLayoutFileName()

@@ -10,7 +10,7 @@
         xmlns:sports="clr-namespace:Supeng.Wpf.Common.Views.Sports;assembly=Supeng.Wpf.Common"
         x:Class="Supeng.Wpf.Common.Test.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainWindowViewModle}}" FontFamily="Pristina">
+        Title="MainWindow" Height="350" Width="525" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainWindowViewModle}}">
 
     <Grid>
         <Grid.RowDefinitions>

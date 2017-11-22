@@ -1,6 +1,4 @@
-﻿using System.Windows;
-
-namespace Supeng.Wpf.Common.Views
+﻿namespace Supeng.Wpf.Common.Views
 {
     /// <inheritdoc />
     /// <summary>
