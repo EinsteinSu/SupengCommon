@@ -19,9 +19,8 @@ namespace Supeng.Wpf.Common.ViewModels
         {
             OkCommand = new DelegateCommand(Ok);
             CancelCommand = new DelegateCommand(Cancel);
-            Size = new WindowSize { Height = 400, Width = 400 };
-            Progress = new ProgressViewModel();
-            Progress.Visibility = Visibility.Hidden;
+            Size = new WindowLayout { Height = 400, Width = 400 };
+            Progress = new ProgressViewModel { Visibility = Visibility.Hidden };
         }
 
         [JsonIgnore]
@@ -39,7 +38,7 @@ namespace Supeng.Wpf.Common.ViewModels
 
         public virtual string Title => string.Empty;
 
-        public WindowSize Size { get; set; }
+        public WindowLayout Size { get; set; }
 
         [JsonIgnore]
         public abstract FrameworkElement Content { get; }
@@ -54,9 +53,11 @@ namespace Supeng.Wpf.Common.ViewModels
         {
             if (File.Exists(GetLayoutFileName()))
             {
-                var vm = JsonConvert.DeserializeObject<WindowSize>(GetLayoutFileName().Load());
+                var vm = JsonConvert.DeserializeObject<WindowLayout>(GetLayoutFileName().Load());
                 Window.Width = vm.Width;
                 Window.Height = vm.Height;
+                Window.Left = vm.Left;
+                Window.Top = vm.Top;
             }
             if (Content != null && Content.DataContext == null)
                 Content.DataContext = this;
@@ -109,7 +110,8 @@ namespace Supeng.Wpf.Common.ViewModels
 
         public virtual void Close()
         {
-            GetLayoutFileName().Save(JsonConvert.SerializeObject(new WindowSize { Height = Window.Height, Width = Window.Width }));
+            GetLayoutFileName()
+                .Save(JsonConvert.SerializeObject(new WindowLayout { Height = Window.Height, Width = Window.Width, Left = Window.Left, Top = Window.Top }));
         }
 
         protected virtual string GetLayoutFileName()

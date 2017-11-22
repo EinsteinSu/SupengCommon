@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using DevExpress.Mvvm.DataAnnotations;
 using Supeng.Wpf.Common.Commons;
 using Supeng.Wpf.Common.ViewModels;
@@ -30,7 +31,20 @@ namespace Supeng.Wpf.Common.Test
 
         public void Show()
         {
-            new DialogWindow().ShowDialogWindow(new DialogWindowTest());
+            DialogWindowTest test = new DialogWindowTest();
+            test.ShowDialogWindow(() =>
+            {
+                MessageBox.Show(test.Title);
+            });
+        }
+
+        public void ShowData()
+        {
+            DataLayoutWindowTest test = new DataLayoutWindowTest{Data = new TestData()};
+            test.ShowDialogWindow(() =>
+            {
+                MessageBox.Show(test.Data.Name);
+            });
         }
 
         public void Hide()
@@ -49,5 +63,27 @@ namespace Supeng.Wpf.Common.Test
         {
             return string.Empty;
         }
+    }
+
+    public class DataLayoutWindowTest : DataLayoutDialogWindowViewModel<TestData>
+    {
+        protected override string LayoutFileName => "Datalayout.config";
+        protected override string Check()
+        {
+            return string.Empty;
+        }
+
+        public override TestData Data { get; set; }
+    }
+
+
+
+    public class TestData
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public DateTime? BirthDate { get; set; }
     }
 }

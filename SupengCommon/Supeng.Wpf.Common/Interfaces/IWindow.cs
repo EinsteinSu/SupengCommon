@@ -10,7 +10,7 @@ namespace Supeng.Wpf.Common.Interfaces
 {
     public interface IWindow
     {
-        WindowSize Size { get; set; }
+        WindowLayout Size { get; set; }
 
         string Title { get; set; }
 
@@ -21,11 +21,15 @@ namespace Supeng.Wpf.Common.Interfaces
         void Load();
     }
 
-    public class WindowSize
+    public class WindowLayout
     {
         public double Height { get; set; }
 
         public double Width { get; set; }
+
+        public double Top { get; set; }
+
+        public double Left { get; set; }
     }
 
     public interface IDialogWindow : IWindow

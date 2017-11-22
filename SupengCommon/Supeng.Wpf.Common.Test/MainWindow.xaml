@@ -17,8 +17,9 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <views:Progress DataContext="{Binding Progress}"/>
-        <StackPanel Grid.Row="1">
-            <Button Command="{Binding ShowCommand}" Content="Show"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button Command="{Binding ShowCommand}" Content="Show Normal"/>
+            <Button Command="{Binding ShowDataCommand}" Content="Show Datalayout"/>
             <Button Command="{Binding HideCommand}" Content="Hide"/>
         </StackPanel>
     </Grid>
