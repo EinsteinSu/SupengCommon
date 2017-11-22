@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:Supeng.Wpf.Common.Test"
         xmlns:views="clr-namespace:Supeng.Wpf.Common.Views;assembly=Supeng.Wpf.Common"
         xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" x:Class="Supeng.Wpf.Common.Test.MainWindow"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:sports="clr-namespace:Supeng.Wpf.Common.Views.Sports;assembly=Supeng.Wpf.Common"
+        x:Class="Supeng.Wpf.Common.Test.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainWindowViewModle}}">
+        Title="MainWindow" Height="350" Width="525" DataContext="{dxmvvm:ViewModelSource Type={x:Type local:MainWindowViewModle}}" FontFamily="Pristina">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,10 +18,16 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <views:Progress DataContext="{Binding Progress}"/>
+        <StackPanel>
+            <views:Progress DataContext="{Binding Progress}"/>
+            <sports:FontControlableTextBlock DataContext="{Binding FontVM,Mode=TwoWay}"></sports:FontControlableTextBlock>
+        </StackPanel>
+
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Command="{Binding ShowCommand}" Content="Show Normal"/>
             <Button Command="{Binding ShowDataCommand}" Content="Show Datalayout"/>
+            <Button Command="{Binding LoadFontCommand}" Content="Load Font"/>
+            <Button Command="{Binding SetFontCommand}" Content="Set Font"/>
             <Button Command="{Binding HideCommand}" Content="Hide"/>
         </StackPanel>
     </Grid>
